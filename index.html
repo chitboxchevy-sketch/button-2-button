@@ -19,7 +19,7 @@
             border: none;
             padding: 20px;
             font-size: 16px;
-            color: white;
+            color: black;
             cursor: pointer;
         }
         #button1 {
@@ -28,12 +28,15 @@
         #button2 {
             background-image: url('button2.png');
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <button id="button1" onclick="toggleButton()">CLICK HERE TO STOP AUDIO</button>
     <button id="button2" onclick="toggleButton()">ACTUALLY, CLICK HERE TO STOP AUDIO</button>
-    <audio id="backgroundAudio" src="audiofile.mp3" loop></audio>
+    <audio id="backgroundAudio" src="audiofile.mp3" loop class="hidden"></audio>
 
     <script>
         function toggleButton() {
