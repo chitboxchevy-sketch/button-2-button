@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>button-2-button</title>
+    <title>Combined Example</title>
     <style>
         body {
             display: flex;
@@ -36,7 +36,7 @@
 <body>
     <button id="button1" onclick="toggleButton()">CLICK HERE TO STOP AUDIO</button>
     <button id="button2" onclick="toggleButton()">ACTUALLY, CLICK HERE TO STOP AUDIO</button>
-    <audio id="backgroundAudio" src="audiofile.mp3" loop class="hidden"></audio>
+    <audio id="backgroundAudio" src="audiofile.mp3" autoplay class="hidden"></audio>
 
     <script>
         function toggleButton() {
@@ -52,7 +52,10 @@
                 button2.style.display = 'block';
             }
 
+            // Ensure the audio plays to the end
             if (!audio.paused) {
+                audio.pause();
+                audio.currentTime = 0; // Reset to the beginning
                 audio.play();
             }
         }
@@ -61,6 +64,12 @@
             const audio = document.getElementById('backgroundAudio');
             audio.play();
         };
+
+        // Ensure the audio plays to the end
+        document.getElementById('backgroundAudio').addEventListener('ended', function() {
+            this.currentTime = 0; // Reset to the beginning
+            this.play();
+        });
     </script>
 </body>
 </html>
